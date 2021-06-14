@@ -34,6 +34,7 @@ class App extends React.Component {
     this.setState({
       locationData: locationResult.data[0],
       display:true,
+      errorMessege:false,
     })
   }
   catch {
@@ -58,16 +59,18 @@ class App extends React.Component {
                   Explore
                 </Button>
               </Form>
-                { this.state.display && <ListGroup>
+                { this.state.display && !(this.state.errorMessege) &&
+                 <div> 
+                  <ListGroup> 
                   <ListGroup.Item>{this.state.locationData.display_name}</ListGroup.Item>
                   <ListGroup.Item>{this.state.locationData.lon}</ListGroup.Item>
                   <ListGroup.Item>{this.state.locationData.lat}</ListGroup.Item>
                   
-                    </ListGroup>}
-
-               
-                { this.state.display && <Image src={`https://maps.locationiq.com/v3/staticmap?key=pk.8694532b1962aa7901ba7712fd7818b9&center=${this.state.locationData.lat},${this.state.locationData.lon}`} alt='map' fluid />
-                }
+                    </ListGroup>
+                     
+                    <Image src={`https://maps.locationiq.com/v3/staticmap?key=pk.8694532b1962aa7901ba7712fd7818b9&center=${this.state.locationData.lat},${this.state.locationData.lon}`} alt='map' fluid />
+                    </div>}
+                
                  { this.state.errorMessege && <Alert variant="danger">
                   <Alert.Heading>Oh snap! You got an error! Status Code :400</Alert.Heading>
                   <p>
