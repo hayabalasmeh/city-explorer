@@ -10,7 +10,7 @@ import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
 import Alert from 'react-bootstrap/Alert';
 import axios from 'axios';
-
+import Weather from './components/Weather';
 class App extends React.Component {
 
   constructor(props){
@@ -77,6 +77,7 @@ class App extends React.Component {
                   Make sure you have entered a city Name or Change the Name of the City you have entered and try again.
                   </p>
                 </Alert>}
+                <Weather />
      </div>
 
     )
