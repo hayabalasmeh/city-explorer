@@ -31,7 +31,7 @@ export class Weather extends Component {
         return (
             <div>
                 <Button variant="primary" type="submit" onClick={this.displayingWeather}>
-                 Weather Forcast
+                 Explore Weather Forcast 
                 </Button>
                 
 
