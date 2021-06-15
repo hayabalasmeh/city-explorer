@@ -19,14 +19,15 @@ class App extends React.Component {
       display:false,
       locationData:'',
       errorMessege:false,
-
+      forcastData:[],
+      error:'',
     }
   }
   renderCity = async (event) =>{
     event.preventDefault();
     let cityChoosed= event.target.cityName.value;
     console.log(cityChoosed);
-    let cityUrl = `https://us1.locationiq.com/v1/search.php?key=pk.8694532b1962aa7901ba7712fd7818b9&q=${cityChoosed}&format=json`; //result will be data in json file
+    let cityUrl = `http://us1.locationiq.com/v1/search.php?key=pk.8694532b1962aa7901ba7712fd7818b9&q=${cityChoosed}&format=json`; //result will be data in json file
     
     try {
       let locationResult = await axios.get(cityUrl);
@@ -35,21 +36,47 @@ class App extends React.Component {
       locationData: locationResult.data[0],
       display:true,
       errorMessege:false,
+      error:'',
     })
   }
-  catch {
+  catch(error) {
    this.setState({
     errorMessege:true,
+    error:`error is ${error}`,
 
    })
+
   }
+  this.displayingWeather();
+  }
+  displayingWeather= async()=>{
+    let weatherUrl= `http://localhost:3030/weather?lon=${this.state.locationData.lon}&lat=${this.state.locationData.lat}`;
+    try{
+    
+        let weatherResult = await axios.get(weatherUrl);
+      console.log(weatherResult.data);
+
+      this.setState({
+        forcastData: weatherResult.data,
+       
+      })
+    }
+   catch(error){
+    this.setState({
+     
+      error:`error is ${error}`,
+  
+  
+     })
+     
+   }
   }
   render(){
     return (
      <div>
        <h1>Explore the Map of Any City You Want </h1>
 
-                    <Form  onSubmit={this.renderCity}>
+                    <Form  onSubmit={this.renderCity}  >
                 <Form.Group className="city-finder" controlId="cityName">
                   <Form.Label>Choose the city you want to Veiw the map for</Form.Label>
                   <Form.Control defaultValue='' type="text" placeholder="Enter The City Name" /> 
@@ -76,8 +103,14 @@ class App extends React.Component {
                   <p>
                   Make sure you have entered a city Name or Change the Name of the City you have entered and try again.
                   </p>
+                  <p>
+                  {this.state.error}
+                  </p>
                 </Alert>}
-                <Weather />
+                <Weather forcastData={this.state.forcastData} latData={this.state.locationData.lat} lonData={this.state.locationData.lon}/>
+                {/* <Button variant="primary" type="submit" onClick={this.displayingWeather}>
+                 Explore Weather Forcast 
+                </Button> */}
      </div>
 
     )

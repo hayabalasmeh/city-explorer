@@ -17,6 +17,11 @@ form{
   margin:10%;
 }
 
-alert{
-  margin:10%;
+div{
+  min-width: 100%;
+}
+
+.card{
+  margin: 10%;
+  display: inline-block;
 }
