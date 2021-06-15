@@ -27,8 +27,8 @@ export class Weather extends Component {
                 { this.props.forcastData.map(item=>{
                     return (  <Card className='card'style={{ width: '18rem' }}>
                   <ListGroup variant="flush">
-                      <ListGroup.Item>{item.date}</ListGroup.Item>
-                   <ListGroup.Item>{item.description}</ListGroup.Item>
+                      <ListGroup.Item>Date is :{item.date}</ListGroup.Item>
+                   <ListGroup.Item>Forcast is :{item.description}</ListGroup.Item>
                       
               </ListGroup>
                  </Card>
