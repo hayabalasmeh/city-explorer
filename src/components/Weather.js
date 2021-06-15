@@ -11,40 +11,31 @@ export class Weather extends Component {
     constructor(props){
         super(props);
         this.state={
-            forcastData:'',
+            
+            error:'',
+            
         }
     }
-    displayingWeather= async()=>{
-    let weatherUrl= 'https://localhost:3030/weather?lon=151.21&lat=-33.87&searchQuery=Sydney';
     
-        let weatherResult = await axios.get(weatherUrl);
-      console.log(weatherResult);
-      this.setState({
-        forcastData: weatherResult,
-        // display:true,
-        // errorMessege:false,
-      })
     
-   
-    }
     render() {
         return (
             <div>
-                <Button variant="primary" type="submit" onClick={this.displayingWeather}>
-                 Explore Weather Forcast 
-                </Button>
+               
                 
 
-                {/* { this.state.forcastData.map(item=>{
-                   return <p>{`The day date is ${item.date} and the weather forcast is ${item.description}`}</p>
-                })} */}
-            {/* /* //    return (  <Card style={{ width: '18rem' }}>
-            //       <ListGroup variant="flush">
-            //           <ListGroup.Item>{item.date}</ListGroup.Item>
-            //           <ListGroup.Item>{item.description}</ListGroup.Item>
+                { this.props.forcastData.map(item=>{
+                    return (  <Card className='card'style={{ width: '18rem' }}>
+                  <ListGroup variant="flush">
+                      <ListGroup.Item>{item.date}</ListGroup.Item>
+                   <ListGroup.Item>{item.description}</ListGroup.Item>
                       
-            //       </ListGroup>
-            //       </Card>) */}
+              </ListGroup>
+                 </Card>
+                 )
+
+                })}
+           
                  
               
                     
