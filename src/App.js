@@ -10,7 +10,7 @@ import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
 import Alert from 'react-bootstrap/Alert';
 import axios from 'axios';
-import Weather from '../components/Weather';
+import Weather from './components/Weather';
 class App extends React.Component {
 
   constructor(props){
