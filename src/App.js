@@ -34,7 +34,7 @@ class App extends React.Component {
     event.preventDefault();
     this.state.cityName = event.target.cityName.value;
     // console.log(cityChoosed);
-    let cityUrl = `http://us1.locationiq.com/v1/search.php?key=${key1}&q=${this.state.cityName}&format=json`; //result will be data in json file
+    let cityUrl = `https://us1.locationiq.com/v1/search.php?key=${key1}&q=${this.state.cityName}&format=json`; //result will be data in json file
     
     try {
       let locationResult = await axios.get(cityUrl);
