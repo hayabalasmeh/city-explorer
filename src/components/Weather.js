@@ -1,10 +1,9 @@
+
+
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
+import { WeatherDay } from './WeatherDay';
 
-import axios from 'axios';
 
 export class Weather extends Component {
 
@@ -12,7 +11,7 @@ export class Weather extends Component {
         super(props);
         this.state={
             
-            error:'',
+            
             
         }
     }
@@ -25,13 +24,7 @@ export class Weather extends Component {
                 
 
                 { this.props.forcastData.map(item=>{
-                    return (  <Card className='card'style={{ width: '18rem' }}>
-                  <ListGroup variant="flush">
-                      <ListGroup.Item>Date is :{item.date}</ListGroup.Item>
-                   <ListGroup.Item>Forcast is :{item.description}</ListGroup.Item>
-                      
-              </ListGroup>
-                 </Card>
+                    return (  <WeatherDay date={item.date} description={item.description} />
                  )
 
                 })}
