@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Card from 'react-bootstrap/Card';
-
+import { Movie } from './Movie';
 
 export class Movies extends Component {
 
@@ -25,28 +25,8 @@ export class Movies extends Component {
                 
 
                 { this.props.moviesData.map(item=>{
-                    return ( <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src={item.link} />
-                    <Card.Body>
-                      <Card.Title>{item.title}</Card.Title>
-                      <Card.Text>
-                        Movie Description: {item.overview}
-                      </Card.Text>
-                      <Card.Text>
-                      Average Votes for it : {item.averageVotes}
-                      </Card.Text>
-                      <Card.Text>
-                      Total Votes for it : {item.totalVotes}
-                      </Card.Text>
-                      <Card.Text>
-                      Popularity for this Movie : {item.popularity}
-                      </Card.Text>
-                      <Card.Text>
-                      Realeased Date : {item.realeasedDate}
-                      </Card.Text>
-                      
-                    </Card.Body>
-                  </Card>
+                    return (<Movie title={item.title} link={item.link} overview={item.overview} averageVotes={item.averageVotes} totalVotes={item.totalVotes} popularity={item.popularity} realeasedDate={item.realeasedDate}/> 
+                   
                  )
 
                 })}
